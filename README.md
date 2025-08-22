@@ -20,7 +20,7 @@ A fuzzy search tool for your zsh/bash command history using fzf.
 
 1. **Download the script:**
    ```bash
-   curl -O https://raw.githubusercontent.com/yourusername/zsh-history/main/zh
+   curl -O https://raw.githubusercontent.com/msk1039/zh/refs/heads/main/zh
    ```
 
 2. **Make it executable:**
