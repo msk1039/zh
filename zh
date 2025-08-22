@@ -1,14 +1,27 @@
 #!/usr/bin/env bash
 
+# Check dependencies
+if ! command -v fzf &> /dev/null; then
+    echo "Error: fzf is required but not installed."
+    echo "Install with: brew install fzf (macOS) or apt install fzf (Linux)"
+    exit 1
+fi
+
+if ! command -v tac &> /dev/null; then
+    echo "Error: tac is required but not installed."
+    echo "Install with: brew install coreutils (macOS) or apt install coreutils (Linux)"
+    exit 1
+fi
+
 if [ -f "$HOME/.zhistory" ]; then
     HIST_FILE="$HOME/.zhistory"
     # Strip timestamp prefix, reverse to get newest first, remove duplicates (keep first=newer), reverse back
-    history_list=$(LC_ALL=C sed 's/^: [0-9]*:[0-9]*;//' "$HIST_FILE" | tail -r | awk '!seen[$0]++' | tail -r)
+    history_list=$(LC_ALL=C sed 's/^: [0-9]*:[0-9]*;//' "$HIST_FILE" | tac | awk '!seen[$0]++' | tac)
 
 elif [ -f "$HOME/.bash_history" ]; then
     HIST_FILE="$HOME/.bash_history"
     # Reverse to get newest first, remove duplicates (keep first=newer), reverse back
-    history_list=$(tail -r "$HIST_FILE" | awk '!seen[$0]++' | tail -r)
+    history_list=$(tac "$HIST_FILE" | awk '!seen[$0]++' | tac)
 
 else
     echo "No history file found."
@@ -16,7 +29,7 @@ else
 fi
 
 # Feed to fzf (reverse order to show newest first)
-selected=$(echo "$history_list" | tail -r | fzf --height 40% --reverse --border --ansi)
+selected=$(echo "$history_list" | tac | fzf --height 40% --reverse --border --ansi)
 
 # Use the selected command directly
 cmd="$selected"

@@ -4,13 +4,15 @@ A fuzzy search tool for your zsh/bash command history using fzf.
 
 ## Features
 
-- 🔍 **Fuzzy search** through your entire command history
-- 🖥️ **Cross-shell support** - works with both zsh and bash
+- **Fuzzy search** through your entire command history
+- **Cross-shell support** - works with both zsh and bash
+- **Cross-platform support** - words on macos, linux, window(WSL)
 
 
 ## Requirements
 
 - [fzf](https://github.com/junegunn/fzf) - Install with `brew install fzf` (macOS) or `apt install fzf` (Ubuntu)
+- [tac](https://www.gnu.org/software/coreutils/) - Install with `brew install coreutils` (macOS) or `apt install coreutils` (Linux)
 
 ## Installation
 
