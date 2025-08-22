@@ -1,6 +1,11 @@
 # zh - Zsh History Search
 
-A fuzzy search tool for your zsh/bash command history using fzf.
+## A fuzzy search tool for your zsh/bash command history using fzf.
+
+
+https://github.com/user-attachments/assets/cdba73f6-3add-455b-8c7a-cbd7b9bc2b0b
+
+
 
 ## Features
 
